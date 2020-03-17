@@ -1,4 +1,4 @@
-package contacto
+package main
 
 import (
 	"fmt"

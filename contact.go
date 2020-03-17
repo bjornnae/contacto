@@ -1,4 +1,4 @@
-package contacto
+package main
 
 import (
 	"bufio"
@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 )
 
 // loglevel 0: no logging
@@ -39,7 +40,6 @@ func getCatalogueEntries(cataloguePath string) []string {
 
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		//fmt.Println("SCANNER -:: " + scanner.Text())
 		lines = append(lines, scanner.Text())
 	}
 
@@ -83,6 +83,7 @@ func ct(host string, url string) {
 	doReq(c)
 }
 
-func main() {
-
+func ctLine(hostAndURLLine string) {
+	splitted := strings.SplitN(hostAndURLLine, " ", 2)
+	ct(splitted[0], splitted[1])
 }
